@@ -1,0 +1,59 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+.main {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: space-around;
+}
+/* .App-container {
+    display: flex;
+    flex-direction: row;
+    margin:auto;
+} */
+.Game {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    user-select: none;
+    overflow: hidden;
+}
+.RowL {
+    display: flex;
+    justify-content: center;
+}
+.Row-Left {
+    display: flex;
+    justify-content: flex-start;
+}
+.RowL-letter {
+    margin: 2px;
+    border: 2px solid  rgb(175 175 175 / 69%);
+    width: 58px;
+    height: 58px;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    caret-color: transparent;
+}
+.letter-absent {
+    background-color: #a2a2a2
+}
+.letter-elsewhere {
+    background: repeating-linear-gradient(45deg,#e9c601,#e9c601 5px,#e9be01 0,#e9be01 10px);
+}
+.letter-correct {
+    background-color: #57ac57;
+}
+.Suggestions-tab {
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
+    margin: 1rem;
+    padding: 1rem;
+}
