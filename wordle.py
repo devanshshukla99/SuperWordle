@@ -83,8 +83,9 @@ class Wordle:
             regex = re.compile(pattern.regex())
 
             guess_possibles = list(filter(regex.match, self.available_words))
-
-            info = -np.log2(len(guess_possibles) / len(self.available_words))
+            info = 1.0
+            if guess_possibles:
+                info = -np.log2(len(guess_possibles) / len(self.available_words))
             guess_info.append((guess, round(info, 4)))
         return sorted(guess_info, key=lambda item: item[1], reverse=True)
 
