@@ -3,7 +3,6 @@ import re
 import numpy as np
 from collections import Counter
 from core.regex import Search
-from rich.progress import track
 
 
 class Wordle:
@@ -76,7 +75,7 @@ class Wordle:
     def _entropy_of_guesses(self, guesses):
         guess_info = []
         pattern = Search()
-        for guess in track(guesses):
+        for guess in guesses:
             # pattern._import(self._search._export())
             pattern.reset()
             pattern.blacklist_all(guess)
