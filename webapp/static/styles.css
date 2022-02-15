@@ -1,20 +1,20 @@
 * {
     margin: 0px;
     padding: 0px;
+    color: #eee;
 }
 .main {
     display: flex;
-    flex-direction: row;
-    /* align-items: center; */
-    justify-content: space-around;
+    flex-direction: column;
+    height: 100vh;
 }
-/* .App-container {
+.App-container {
     display: flex;
     flex-direction: row;
-    margin:auto;
-} */
+    justify-content: space-around;
+}
 .predictions-table {
-    height: 90vh;
+    height: 80vh;
     width: 250px;
     overflow-y: auto;
     border-collapse: collapse;
@@ -23,7 +23,7 @@
 .predictions-table thead {
     position: sticky;
     top: 0;
-    background: #eee;
+    background: rgb(66, 66, 66);
 }
 .Game {
     padding: 1rem;
@@ -44,7 +44,7 @@
 }
 .RowL-letter {
     margin: 2px;
-    border: 2px solid  rgb(175 175 175 / 69%);
+    border: 2px solid  rgba(124, 124, 124, 0.69);
     width: 58px;
     height: 58px;
     font-size: 32px;
@@ -54,9 +54,10 @@
     text-transform: uppercase;
     font-weight: bold;
     caret-color: transparent;
+    cursor: pointer;
 }
 .letter-absent {
-    background-color: #a2a2a2
+    background-color: #5a5a5a
 }
 .letter-elsewhere {
     background: repeating-linear-gradient(45deg,#e9c601,#e9c601 5px,#e9be01 0,#e9be01 10px);
