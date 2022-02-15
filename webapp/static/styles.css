@@ -13,7 +13,21 @@
     flex-direction: row;
     margin:auto;
 } */
+.predictions-table {
+    height: 90vh;
+    width: 250px;
+    overflow-y: auto;
+    border-collapse: collapse;
+    text-align: center
+}
+.predictions-table thead {
+    position: sticky;
+    top: 0;
+    background: #eee;
+}
 .Game {
+    padding: 1rem;
+    margin: 1rem;
     display: flex;
     flex-direction: column;
     max-width: 500px;
@@ -52,8 +66,17 @@
 }
 .Suggestions-tab {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     max-width: 500px;
     margin: 1rem;
     padding: 1rem;
+}
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0, 0.3);
 }

@@ -2,11 +2,11 @@ import json
 
 from flask import Flask, make_response, render_template, request
 
-from core.wordle import Wordle
+from wordle import Wordle
 
 CLEAR_TOKEN = "batman"
 app = Flask(__name__, static_folder="static")
-w = Wordle()
+w = Wordle("core/wordle_trim_out_pro.npy")
 
 
 @app.route("/reset", methods=["POST"])
@@ -21,11 +21,10 @@ def process():
         data = json.loads(data)
         pattern = data.get("pattern").lower()
         word = data.get("word").lower()
-        possible = data.get("possible").lower()
-        w.update(word, possible)
         print(w._blacklist)
+        info, suggestions = w.suggest(word, pattern)
         return render_template(
-            "render_suggestions.html", suggestions=w.suggest(pattern, possible)
+            "render_suggestions.html", suggestions=suggestions, info=round(info, 4)
         )
     return (404,)
 
@@ -33,4 +32,4 @@ def process():
 @app.route("/", methods=["GET"])
 def main():
     w.reset()
-    return render_template("index.html", suggestions=w.suggest())
+    return render_template("index.html", suggestions=w._raw[:20], info=round(0.0, 4))

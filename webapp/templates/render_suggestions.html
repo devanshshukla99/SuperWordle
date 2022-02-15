@@ -1,16 +1,19 @@
-<table class="table table-striped table-hover">
-    <thead class="thead-light">
-        <th>Word</th>
-        <th>Probability</th>
-    </thead>
-    <tbody class="table-response">
-        {% if suggestions %}
-        {% for x in suggestions %}
-        <tr>
-            <td>{{x[0]}}</td>
-            <td>{{x[1]}}</td>
-        </tr>
-        {% endfor %}
-        {% endif %}
-    </tbody>
-</table>
+<div class="information bg-light text-primary d-flex justify-content-center" id="info">
+    E(I) = {{info}} bits
+</div>
+<div class="predictions-table">
+    <table class="table table-striped table-hover">
+        <thead class="thead-light">
+            <th>Word</th>
+            <th>E(info)</th>
+        </thead>
+        <tbody class="table-response">
+            {% for x in suggestions %}
+            <tr>
+                <td>{{x[0]}}</td>
+                <td>{{x[1]}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

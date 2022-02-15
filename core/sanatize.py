@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 import numpy as np
 
@@ -21,4 +22,11 @@ for i in nltk.corpus.brown.tagged_words():
     if len(i[0]) == 5:
         out.append(i)
 words = [x[0].lower() for x in out]
+
+
+regex = re.compile("[a-z]+")
+
+_words = list(filter(regex.fullmatch, words))
+
+b = [x for x in a if len(x) == 5]
 np.save("out", np.array(words))
