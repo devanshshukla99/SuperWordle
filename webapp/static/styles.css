@@ -13,6 +13,9 @@
     flex-direction: row;
     justify-content: space-around;
 }
+.help-hidden {
+    display: none;
+}
 .predictions-table {
     height: 80vh;
     width: 250px;
@@ -31,6 +34,7 @@
     display: flex;
     flex-direction: column;
     max-width: 500px;
+    max-height: 500px;
     user-select: none;
     overflow: hidden;
 }

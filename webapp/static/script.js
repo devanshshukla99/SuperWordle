@@ -1,8 +1,13 @@
 window.onload = function () {
+    document.getElementById("help-btn").addEventListener("click", event => {
+        var helpelement = document.getElementById("help")
+        helpelement.classList.toggle("help-hidden")
+    });
+
     var activeElement = document.getElementById("row-1-col-1")
-    var main = document.getElementById("main")
-    main.addEventListener("keydown", event => {
-        console.log(event)
+    var main = document.getElementById("game")
+    game.addEventListener("keydown", event => {
+        // console.log(event)
         if (event.key != "Enter") {
             index = Array.prototype.indexOf.call(activeElement.parentElement.children, activeElement);
 
@@ -33,7 +38,7 @@ window.onload = function () {
 
     Array.from(document.getElementsByClassName("RowL-letter")).forEach((element, index) => {
         element.addEventListener("mousedown", event => {
-            console.log(event)
+            // console.log(event)
             event.preventDefault()
             if (event.target == document.activeElement) {
                 if (event.target.classList.contains("letter-elsewhere")) {
@@ -63,7 +68,7 @@ window.onload = function () {
             if (event.key === "Enter") {
                 var [pattern, word] = getPattern(event.target.parentElement)
                 if (word.length === 5) {
-                    console.log("process")
+                    // console.log("process")
                     const request = new XMLHttpRequest();
                     request.open("POST", `/process`);
                     request.onload = () => {
@@ -79,7 +84,7 @@ window.onload = function () {
                         "word": word,
                     }
                     if (word.length === 5) {
-                        console.log(post_data)
+                        // console.log(post_data)
                         document.getElementById("info").textContent = "Processing..."
                         request.send(JSON.stringify(post_data));
                     }
