@@ -1,6 +1,3 @@
-from re import L
-
-
 class Letter:
     def __init__(self, char="*") -> None:
         self._wildcard = "*"
