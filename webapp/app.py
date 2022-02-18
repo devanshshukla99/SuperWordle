@@ -2,11 +2,11 @@ import json
 
 from flask import Flask, make_response, render_template, request
 
-from wordle import Wordle
+from core.wordle import Wordle
 
 CLEAR_TOKEN = "batman"
 app = Flask(__name__, static_folder="static")
-w = Wordle("core/wordle_trim_out_pro.npy")
+w = Wordle("core/wordlist_pro.npy")
 
 
 @app.route("/reset", methods=["POST"])

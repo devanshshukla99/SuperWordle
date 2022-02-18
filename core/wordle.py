@@ -6,16 +6,18 @@ from core.regex import Search
 
 
 class Wordle:
-    def __init__(self, filename) -> None:
+    def __init__(self, filename=None) -> None:
         self._filenme = filename
+        self._blacklist = set()
+        self._search = Search()
+        if not filename:
+            return
         self._raw = self._load_db(filename)
         self.total_words = [x[0] for x in self._raw]
         self.available_words = self.total_words
         self._total_alphas, self._alpha_freq = self._get_total_alphabets(
             self.available_words
         )
-        self._blacklist = set()
-        self._search = Search()
         return
 
     def __repr__(self):
