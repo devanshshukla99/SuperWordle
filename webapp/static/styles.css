@@ -10,8 +10,13 @@
 }
 .App-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
+}
+@media only screen and (min-width: 600px) {
+    .App-container {
+        flex-direction: row;
+    }
 }
 .help-hidden {
     display: none;
