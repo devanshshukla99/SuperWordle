@@ -27,7 +27,8 @@ class Letter:
 
     def blacklist(self, val: str) -> bool:
         self._blacklist.add(val)
-        self._wildcard_regex.remove(val)
+        if val in self._wildcard_regex:
+            self._wildcard_regex.remove(val)
         return True
 
     def _black_generate(self) -> str:
