@@ -78,15 +78,14 @@ class Wordle:
         guess_info = []
         pattern = Search()
         for guess in guesses:
-            # pattern._import(self._search._export())
             pattern.reset()
             pattern.blacklist_all(guess)
             regex = re.compile(pattern.regex())
 
-            guess_possibles = list(filter(regex.match, self.available_words))
+            guess_possibles = len(list(filter(regex.match, self.available_words)))
             info = 1.0
             if guess_possibles:
-                info = -np.log2(len(guess_possibles) / len(self.available_words))
+                info = -np.log2(guess_possibles / len(self.available_words))
             guess_info.append((guess, round(info, 4)))
         return sorted(guess_info, key=lambda item: item[1], reverse=True)
 
@@ -116,7 +115,7 @@ class Wordle:
         if possible:
             for x in list(possible):
                 _guess = _guess.replace(x, "")
-        self.blacklist(list(_guess))
+        self._search.blacklist_all(_guess)
         return True
 
     def reset(self) -> bool:

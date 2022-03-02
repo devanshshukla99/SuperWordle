@@ -5,7 +5,7 @@ window.onload = function () {
     });
 
     var activeElement = document.getElementById("row-1-col-1")
-    var main = document.getElementById("game")
+    var game = document.getElementById("game")
     game.addEventListener("keydown", event => {
         // console.log(event)
         if (event.key != "Enter") {
@@ -20,7 +20,6 @@ window.onload = function () {
                     prev_element.focus();
                 }
             }
-
             else if (event.key.match(/(\b[a-zA-Z]\b)/g)) {
                 event.preventDefault();
                 activeElement.textContent = event.key;
@@ -63,6 +62,8 @@ window.onload = function () {
         });
     });
 
+    // request the suggestions
+    // add EventListeners to every 5th letter
     for (let i = 1; i < 6; i++) {
         document.getElementById("row-" + i + "-col-5").addEventListener("keypress", event => {
             if (event.key === "Enter") {
@@ -84,8 +85,7 @@ window.onload = function () {
                         "word": word,
                     }
                     if (word.length === 5) {
-                        // console.log(post_data)
-                        document.getElementById("info").textContent = "Processing..."
+                        document.getElementById("info").innerHTML = `<div class="spinner-grow text-primary spinner-border-sm" id="spinner" role="status"></div>`
                         request.send(JSON.stringify(post_data));
                     }
                 }

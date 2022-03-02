@@ -1,7 +1,11 @@
+import string
+
+
 class Letter:
     def __init__(self, char="*") -> None:
         self._wildcard = "*"
-        self._wildcard_regex = "[a-z]"
+        # self._wildcard_regex = "[a-z]"
+        self._wildcard_regex = list(string.ascii_lowercase)
         self._fixed = False
         self._blacklist = set()
         self._regex = self._wildcard_regex
@@ -11,16 +15,20 @@ class Letter:
         return self.regex
 
     def _process_wildcard(self):
-        return self._regex.replace(self._wildcard, self._wildcard_regex)
+        return self._regex.replace(
+            self._wildcard, f'[{"|".join(self._wildcard_regex)}]'
+        )
 
     @property
     def regex(self):
         if not self._fixed:
-            self._regex = "".join([self._black_generate(), self._wildcard_regex])
+            self._regex = f'[{"|".join(self._wildcard_regex)}]'
         return self._regex
 
     def blacklist(self, val: str) -> bool:
         self._blacklist.add(val)
+        self._wildcard_regex.remove(val)
+        return True
 
     def _black_generate(self) -> str:
         if not self._blacklist:
@@ -45,7 +53,6 @@ class Search:
         return self.regex()
 
     def blacklist_all(self, chars: str) -> bool:
-        chars = list(chars)
         for char in chars:
             self.blacklist("*", char)
         self._clear_dubs()
